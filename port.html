@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naraen Mohandoss | IT Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #112240;
+            --accent: #64ffda;
+            --light: #ccd6f6;
+            --white: #e6f1ff;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, #07162c 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+        
+        .btn i {
+            margin-right: 0.5rem;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--secondary);
+            position: relative;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), 
+                        url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            background: url('assets/images/profile.jpg') center center/cover;
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+            animation: pulse 3s infinite;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .project-content p {
+            margin-bottom: 1rem;
+            min-height: 80px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-stack span {
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: var(--secondary);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Certifications Section */
+        .certs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .cert-card {
+            background: var(--secondary);
+            border-radius: 10px;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-start;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-right: 1.5rem;
+            min-width: 50px;
+        }
+        
+        .cert-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-content p {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--secondary);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(100, 255, 218, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--accent);
+        }
+        
+        .author-info p {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 1rem;
+            min-width: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(17, 34, 64, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 4px;
+            color: var(--light);
+            font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 25, 47, 0.9);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(100, 255, 218, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(100, 255, 218, 0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--primary);
+                width: 100%;
+                height: calc(100vh - 80px);
+                padding: 2rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid,
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 7rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .profile-photo {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">N<span style="color: var(--white);">M</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span>Naraen Mohandoss</span>,<br>IT Enthusiast & Future Tech Leader</h1>
+                <p>A passionate Information Technology undergraduate with a strong foundation in programming, AI/ML concepts, and web technologies. Eager to apply my technical skills in real-world environments and contribute to innovation.</p>
+                <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+                <a href="#" class="btn" style="margin-left: 1rem;"><i class="fas fa-download"></i> Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dedicated Information Technology student currently pursuing my B.Tech at Sri Manakula Vinayagar Engineering College, Puducherry University. With a CGPA of 6.28 through my 4th semester, I'm committed to excellence in both academic and practical aspects of technology.</p>
+                    <p>My technical expertise includes Python, AI/ML fundamentals, C/C++, web technologies (HTML/CSS), and proficiency with MS Office. I'm known for being a quick learner with a strong desire to solve complex problems and collaborate effectively in team settings.</p>
+                    <p>My career goal is to become a proficient AI/ML engineer, leveraging technology to create innovative solutions that address real-world challenges. I'm particularly interested in how artificial intelligence can transform healthcare diagnostics and improve accessibility to medical expertise.</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/naraen-mohan-8689b2245" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:naraenmohandoss@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-photo"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AI Disease Diagnosis System">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Disease Diagnosis System</h3>
+                        <p>A prototype that analyzes symptoms and suggests probable diseases using artificial intelligence algorithms. The system helps in preliminary medical assessment.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Machine Learning</span>
+                            <span>TensorFlow</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="MCQ Generator">
+                    </div>
+                    <div class="project-content">
+                        <h3>MCQ Generator using AI</h3>
+                        <p>Created a question bank generator using natural language processing to automatically generate multiple-choice questions from textual content.</p>
+                        <div class="tech-stack">
+                            <span>NLP</span>
+                            <span>Python</span>
+                            <span>Transformers</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AI Personal Assistant">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Personal Assistant</h3>
+                        <p>Developed a voice-controlled assistant to automate simple tasks like setting reminders, answering questions, and performing web searches.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Speech Recognition</span>
+                            <span>APIs</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>C/C++</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML/CSS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>AI/ML</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Machine Learning</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Natural Language Processing</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Software</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>MS Office</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Git & GitHub</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certs-container">
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Python Programming</h3>
+                        <p>IIT Madras Research Park</p>
+                        <p>Comprehensive training in Python fundamentals and real-world problem solving</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Mobile App Development</h3>
+                        <p>Infosys Springboard</p>
+                        <p>Using Flutter framework to build cross-platform mobile applications</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Software Development</h3>
+                        <p>The Digital Adda</p>
+                        <p>Fundamentals of software engineering and development practices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>Testimonials</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Naraen demonstrated exceptional problem-solving skills during our AI workshop. His project on disease diagnosis showed innovative thinking and technical proficiency beyond his academic level.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Dr. Rajesh Kumar</h4>
+                            <p>Professor of Artificial Intelligence, SMVEC</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>During the EV workshop, Naraen showed great enthusiasm and technical aptitude. He quickly grasped complex concepts and contributed valuable insights to our team projects.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Mr. Anand Sharma</h4>
+                            <p>Workshop Instructor, TVS Motors</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>Naraen's personal assistant project was impressive in its execution. He showed strong programming skills and the ability to integrate multiple technologies into a cohesive solution.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Prof. Meena Subramanian</h4>
+                            <p>Department of IT, SMVEC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>naraenmohandoss@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 74485 95019</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Cuddalore, Tamil Nadu, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/naraen-mohan-8689b2245" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Naraen Mohandoss</div>
+                <p>Information Technology Student & Aspiring AI Engineer</p>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <p class="copyright">© 2024 Naraen Mohandoss. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    bar.style.width = bar.getAttribute('data-width') + '%';
+                }
+            });
+        };
+        
+        // Initial check and on scroll
+        animateSkillBars();
+        window.addEventListener('scroll', animateSkillBars);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
